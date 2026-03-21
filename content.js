@@ -19,11 +19,9 @@ function applyBlur(selectors, isEnabled) {
   const style = document.createElement('style');
   style.id = 'redactor-blur-styles';
 
-  // Generate CSS rules
+  // Generate CSS rules - use selectors directly (CSS handles quotes correctly)
   const cssRules = selectors.map(selector => {
-    // Escape special characters for CSS
-    const escapedSelector = selector.replace(/'/g, "\\'");
-    return `${escapedSelector} {
+    return `${selector} {
       filter: blur(8px) !important;
       -webkit-filter: blur(8px) !important;
       user-select: none !important;
