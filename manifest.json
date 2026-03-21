@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Zeniqle Redactor",
   "version": "1.0.0",
-  "description": "Protect sensitive information during screen recordings. Blur passwords, emails, usernames, and any content on any website using CSS selectors. Perfect for demos, tutorials, and presentations.",
+  "description": "Blur sensitive content during screen recordings. Protect passwords, emails, and private data on any website.",
   "permissions": ["storage", "activeTab", "scripting"],
   "host_permissions": ["<all_urls>"],
   "action": {
