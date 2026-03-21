@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redactor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Redactor</h1>
+      <button id="toggleAll" class="toggle-btn">
+        <span class="status-indicator"></span>
+        <span class="status-text">Disabled</span>
+      </button>
+    </header>
+
+    <div class="add-selector">
+      <input
+        type="text"
+        id="selectorInput"
+        placeholder="Enter CSS selector..."
+        autocomplete="off"
+      >
+      <button id="addSelector" class="add-btn">+</button>
+    </div>
+
+    <div class="presets">
+      <span class="label">Quick Add:</span>
+      <button class="preset-btn" data-selector="input[type='password']">Passwords</button>
+      <button class="preset-btn" data-selector="input[type='email']">Emails</button>
+      <button class="preset-btn" data-selector="[data-testid='User-Name']">X Usernames</button>
+    </div>
+
+    <div class="selectors-list" id="selectorsList"></div>
+
+    <footer>
+      <button id="clearAll" class="clear-btn">Clear All</button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

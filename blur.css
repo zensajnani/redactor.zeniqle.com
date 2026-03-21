@@ -1,0 +1,4 @@
+/* Base blur transition */
+[data-redactor-blur] {
+  transition: filter 0.2s ease, -webkit-filter 0.2s ease !important;
+}
