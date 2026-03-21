@@ -110,9 +110,25 @@ async function saveAndRender() {
 }
 
 function applyBlur() {
-  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    if (tabs[0]?.id) {
-      chrome.tabs.sendMessage(tabs[0].id, {
+  chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+    if (!tabs[0]?.id) return;
+
+    try {
+      // Try sending message to content script first
+      await chrome.tabs.sendMessage(tabs[0].id, {
+        action: 'updateBlur',
+        selectors,
+        isEnabled
+      });
+    } catch (error) {
+      // Content script might not be loaded, inject it
+      console.log('Content script not responding, injecting...', error);
+      await chrome.scripting.executeScript({
+        target: { tabId: tabs[0].id },
+        files: ['content.js']
+      });
+      // Try again after injection
+      await chrome.tabs.sendMessage(tabs[0].id, {
         action: 'updateBlur',
         selectors,
         isEnabled
